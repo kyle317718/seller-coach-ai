@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>API 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #result { margin-top: 20px; white-space: pre-wrap; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h2>DeepSeek API 테스트</h2>
+    <button onclick="testAPI()">테스트 실행</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = '요청 보내는 중...';
+            resultDiv.className = '';
+            
+            try {
+                const response = await fetch('http://localhost:5000/mcp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    mode: 'cors',
+                    body: JSON.stringify({
+                        command: 'analyze',
+                        payload: {
+                            title: '프리미엄 무선 블루투스 이어폰',
+                            description: '최신 블루투스 5.2 기술을 탑재한 프리미엄 무선 이어폰입니다. 액티브 노이즈 캔슬링 기능과 40시간 재생 시간을 제공하며, IPX7 방수 등급을 지원합니다.'
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                resultDiv.className = 'success';
+            } catch (error) {
+                resultDiv.textContent = '오류 발생: ' + error.message;
+                resultDiv.className = 'error';
+                console.error('API 요청 오류:', error);
+            }
+        }
+    </script>
+</body>
+</html> 
