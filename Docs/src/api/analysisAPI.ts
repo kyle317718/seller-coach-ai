@@ -1,0 +1,1 @@
+import { MarketAnalysis } from '../data/analysisData'; 

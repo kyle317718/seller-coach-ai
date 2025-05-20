@@ -1,0 +1,35 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model ProductAnalysis {
+    id          String   @id @default(uuid())
+    productName String
+    keyword     String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    // 검색 트렌드 데이터
+    searchTrend Json[]
+
+    // 경쟁사 분석 데이터
+    competitors Json[]
+
+    // 시장 분석 데이터
+    marketSize  Float
+    marketGrowth Float
+    marketShare Float
+
+    // 사용자 입력 데이터
+    priceRange  Json    // { min: number, max: number }
+    targetMarket String[]
+    
+    // 분석 결과
+    riskScore   Float
+    recommendations String[]
+} 

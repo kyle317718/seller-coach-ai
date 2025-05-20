@@ -1,0 +1,14 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/analysis-result/page": "app/analysis-result/page.js",
+  "/analysis/page": "app/analysis/page.js",
+  "/competitor-analysis/page": "app/competitor-analysis/page.js",
+  "/market-analysis/page": "app/market-analysis/page.js",
+  "/page": "app/page.js",
+  "/product-analysis/page": "app/product-analysis/page.js",
+  "/price-analysis/page": "app/price-analysis/page.js",
+  "/product-analysis/result/page": "app/product-analysis/result/page.js",
+  "/risk-analysis/page": "app/risk-analysis/page.js",
+  "/target-analysis/page": "app/target-analysis/page.js",
+  "/trend-analysis/page": "app/trend-analysis/page.js"
+}

@@ -1,0 +1,30 @@
+{
+    "timestamp": "2024-02-29T04:45:41.460Z",
+    "frontend": {
+        "port": 3000,
+        "url": "http://localhost:3000",
+        "status": "running",
+        "engine": "Next.js 15.3.1 (Turbopack)",
+        "compiledPages": [
+            "/",
+            "/analysis",
+            "/analysis/trend",
+            "/analysis/market",
+            "/analysis/competition",
+            "/analysis/target",
+            "/analysis/pricing",
+            "/analysis/marketing",
+            "/analysis/report",
+            "/analysis/risk"
+        ],
+        "networkUrl": "http://192.168.35.18:3000"
+    },
+    "backend": {
+        "port": 5002,
+        "url": "http://localhost:5002",
+        "status": "running",
+        "environmentVariables": {
+            "DEEPSEEK_API_KEY": "not_set"
+        }
+    }
+}

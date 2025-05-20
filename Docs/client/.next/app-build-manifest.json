@@ -1,0 +1,103 @@
+{
+  "pages": {
+    "/_not-found": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/_not-found-704cb21f521adc98.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/326-8b3133e3c5adca5f.js",
+      "static/css/cc093a595c11418c.css",
+      "static/chunks/app/layout-8e88e7486ec354c4.js"
+    ],
+    "/analysis-result/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/ca377847-b102afdf2199cf77.js",
+      "static/chunks/547-10a39b530bfefd45.js",
+      "static/chunks/app/analysis-result/page-7eb2866d08e67ccb.js"
+    ],
+    "/analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/analysis/page-2138aa51d07b2490.js"
+    ],
+    "/competitor-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/competitor-analysis/page-8a9249bb5fa1dfcf.js"
+    ],
+    "/market-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/market-analysis/page-1e35df9375837c72.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/page-9d6703f032303886.js"
+    ],
+    "/product-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/ca377847-b102afdf2199cf77.js",
+      "static/chunks/547-10a39b530bfefd45.js",
+      "static/chunks/app/product-analysis/page-fdfdcfc3141295b8.js"
+    ],
+    "/price-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/price-analysis/page-96e8fc4359289060.js"
+    ],
+    "/product-analysis/result/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/ca377847-b102afdf2199cf77.js",
+      "static/chunks/547-10a39b530bfefd45.js",
+      "static/chunks/app/product-analysis/result/page-135ab94ddd56ca3d.js"
+    ],
+    "/risk-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/risk-analysis/page-c6f0e3a6b86e0782.js"
+    ],
+    "/target-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/target-analysis/page-39a2ff0dcf335a24.js"
+    ],
+    "/trend-analysis/page": [
+      "static/chunks/webpack-37aa2d529bfdb1d4.js",
+      "static/chunks/fd9d1056-8952fe0bbfc7e151.js",
+      "static/chunks/472-773fc3ac168adf39.js",
+      "static/chunks/main-app-d1cf5d5815386812.js",
+      "static/chunks/app/trend-analysis/page-2f18561bfd2208d7.js"
+    ]
+  }
+}
