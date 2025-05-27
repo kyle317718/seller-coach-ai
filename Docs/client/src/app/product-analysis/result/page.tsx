@@ -1,9 +1,19 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import AnalysisResult from '../../../components/AnalysisResult';
 
+import HeaderNavBar from '../../../components/HeaderNavBar';
+
 export default function ProductAnalysisResultPage() {
+  return (
+    <Suspense>
+      <ProductAnalysisResultPageContent />
+    </Suspense>
+  );
+}
+
+function ProductAnalysisResultPageContent() {
   const searchParams = useSearchParams();
   const query = searchParams?.get("query") || "";
   const [result, setResult] = useState({
@@ -25,10 +35,11 @@ export default function ProductAnalysisResultPage() {
   const handleReset = () => (window.location.href = '/product-analysis');
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-50 to-white py-12">
-      <div className="w-full max-w-2xl">
-        <h1 className="text-4xl font-extrabold mb-8 text-center text-indigo-700 drop-shadow-sm tracking-tight">AI 분석 결과</h1>
-        <div className="mb-4 text-center text-lg text-gray-600">검색어: <b>{query}</b></div>
+    <>
+      <HeaderNavBar />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-50 to-white py-12">
+      <div className="w-full">
+        
         <AnalysisResult
           result={result}
           onRetry={handleRetry}
@@ -37,5 +48,6 @@ export default function ProductAnalysisResultPage() {
         />
       </div>
     </div>
+    </>
   );
 }

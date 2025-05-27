@@ -1,9 +1,0 @@
-{
-  "/product-analysis/market/page": "app/product-analysis/market/page.js",
-  "/page": "app/page.js",
-  "/product-analysis/competition/page": "app/product-analysis/competition/page.js",
-  "/product-analysis/trend/page": "app/product-analysis/trend/page.js",
-  "/product-analysis/target/page": "app/product-analysis/target/page.js",
-  "/product-analysis/risk/page": "app/product-analysis/risk/page.js",
-  "/product-analysis/pricing/page": "app/product-analysis/pricing/page.js"
-}

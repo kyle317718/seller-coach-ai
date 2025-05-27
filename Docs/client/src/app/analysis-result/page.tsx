@@ -17,14 +17,19 @@ const dummyResult = {
   patent: { summary: '특허 분석 결과 요약', chart: [40, 45, 50, 55] },
 };
 
+import HeaderNavBar from '../../components/HeaderNavBar';
+
 export default function AnalysisResultPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-50 to-white py-12">
+    <>
+      <HeaderNavBar />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-50 to-white py-12">
       <div className="w-full max-w-4xl">
         <h1 className="text-4xl font-extrabold mb-8 text-center text-indigo-700 drop-shadow-sm tracking-tight">AI 10단계 분석 결과</h1>
         <AnalysisFlow result={dummyResult} />
       </div>
     </div>
+    </>
   );
 }
 

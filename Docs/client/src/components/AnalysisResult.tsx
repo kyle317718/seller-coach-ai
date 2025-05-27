@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import AnalysisNavBar from './AnalysisNavBar';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
@@ -210,8 +211,27 @@ const defaultSummary = {
 // 안전하게 값 또는 더미 반환
 const safe = (v: any, fallback: string) => (v === undefined || v === null || v === '') ? fallback : v;
 
+// 안전하게 차트 데이터 반환
+function getBarData(data: any) {
+  if (!data || !data.labels || !data.datasets) return defaultBarData;
+  return data;
+}
+function getDoughnutData(data: any) {
+  if (!data || !data.labels || !data.datasets) return defaultDoughnutData;
+  return data;
+}
+
+// Chart.js 에러 방어용 fallback 컴포넌트
+function SafeChart({ children }: { children: React.ReactNode }) {
+  try {
+    return <>{children}</>;
+  } catch (e) {
+    return <div className="text-red-500 text-sm">그래프를 표시할 수 없습니다.</div>;
+  }
+}
+
 export default function AnalysisResult({ result, onRetry, onPdf, onReset }: Props) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [salesMethod, setSalesMethod] = useState<'consignment' | 'direct'>('consignment');
 
   useEffect(() => {
@@ -229,67 +249,77 @@ export default function AnalysisResult({ result, onRetry, onPdf, onReset }: Prop
     );
   }
 
-  // 자동 요약 화면: step이 0일 때만 요약 전체 화면 표시
-  if (step === 0) {
-    return (
-      <div className="min-h-screen bg-indigo-50 py-12 px-4 w-full">
-        {/* 상단 타이틀 */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold text-indigo-700 mb-2">AI 분석 결과</h1>
-          <div className="text-lg text-gray-600">검색어: <b>{result.name || result.title || '-'}</b></div>
-        </div>
-        {/* 단계/탭 */}
-        <div className="flex justify-between items-center w-full mb-8" style={{maxWidth:'100%'}}>
-          <span className="text-sm text-gray-500">1 / 12 단계</span>
-          <span className="text-indigo-700 font-bold bg-indigo-50 px-4 py-1 rounded">AI 분석 전체 요약</span>
-        </div>
-        {/* 카드형 레이아웃 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-10">
-          <div className="bg-white rounded-2xl shadow-lg p-10 min-h-[340px] flex flex-col justify-center w-full">
-            <div className="font-bold mb-4 text-lg">시장 성장 추이</div>
-            <Bar data={result.market?.chartData || defaultBarData} />
-          </div>
-          <div className="bg-white rounded-2xl shadow-lg p-10 min-h-[340px] flex flex-col justify-center w-full">
-            <div className="font-bold mb-4 text-lg">경쟁사 비교</div>
-            <Doughnut data={result.competitor?.chartData || defaultDoughnutData} />
-          </div>
-        </div>
-        {/* 요약 박스 */}
-        <div className="w-full mt-8 p-8 bg-orange-50 border-l-4 border-orange-400 rounded-xl text-base text-gray-800">
-          <div className="font-bold text-orange-600 mb-3 text-lg">AI 분석 전체 요약</div>
-          <div className="mb-1"><b>강점:</b> {`시장 성장률: ${safe(result.market?.growthRate, '25')}%, TAM: ${safe(result.market?.tam, '1조 2,000억원')} / 주요 경쟁사: ${safe(result.competitor?.main, 'A사, B사, C사')} / 타겟: ${safe(result.target?.main, '20~30대 여성')} (${safe(result.target?.feature, '온라인 쇼핑 선호, 트렌드 민감')}) / 트렌드: ${safe(result.trend?.trend, '친환경, 미니멀리즘')} (${safe(result.trend?.change, '최근 2년간 40% 증가')})`}</div>
-          <div className="mb-1"><b>약점/보완점:</b> {`리스크: ${safe(result.risk?.main, '원자재 가격 변동, 공급망 불안')} / 상세페이지 개선: ${safe(result.detailPage?.improve, '고객 후기 강화, 상세 이미지 추가')}`}</div>
-          <div className="mb-1"><b>시장 기회:</b> {safe(result.trend?.trend, '친환경, 미니멀리즘')}</div>
-          <div className="mb-1"><b>주요 리스크:</b> {safe(result.risk?.main, '원자재 가격 변동, 공급망 불안')}</div>
-          <div><b>실전 조언:</b> {`마케팅: ${safe(result.marketing?.main, 'SNS 인플루언서 마케팅, 검색광고')} / 채널: ${safe(result.marketing?.channel, '인스타그램, 네이버, 유튜브')} / 상세페이지: ${safe(result.detailPage?.key, '상세 이미지, 구매 후기, Q&A')} / 9단계: ${safe(result.step9?.summary, '9단계 요약')} / 10단계: ${safe(result.step10?.summary, '10단계 요약')}`}</div>
-        </div>
-      </div>
-    );
-  }
-
-  // 기존 단계별 상세 분석 화면 (step > 0)
+  // 단계별 정보
   const isFirst = step === 0;
   const isLast = step === steps.length - 1;
+  const stepInfo = steps[step];
+
+  // 단계별 그래프 데이터 매핑
+  const stepChart: Record<string, React.ReactNode> = {
+    market: <SafeChart><Bar data={getBarData(result.market?.chartData)} /></SafeChart>,
+    pricing: <SafeChart><Line data={getBarData(result.pricing?.chartData)} /></SafeChart>,
+    competitor: <SafeChart><Doughnut data={getDoughnutData(result.competitor?.chartData)} /></SafeChart>,
+    target: <SafeChart><Bar data={getBarData(result.target?.chartData)} /></SafeChart>,
+    trend: <SafeChart><Line data={getBarData(result.trend?.chartData)} /></SafeChart>,
+    risk: <SafeChart><Doughnut data={getDoughnutData(result.risk?.chartData)} /></SafeChart>,
+    detailPage: <SafeChart><Bar data={getBarData(result.detailPage?.chartData)} /></SafeChart>,
+    marketing: <SafeChart><Doughnut data={getDoughnutData(result.marketing?.chartData)} /></SafeChart>,
+    logistics: <SafeChart><Bar data={getBarData(result.logistics?.chartData)} /></SafeChart>,
+    patent: <SafeChart><Doughnut data={getDoughnutData(result.patent?.chartData)} /></SafeChart>,
+    summary: <SafeChart><Bar data={defaultBarData} /></SafeChart>,
+    final: <SafeChart><Line data={defaultBarData} /></SafeChart>,
+    strategy: null,
+  };
+
+  // 진행 바
+  const progress = Math.round(((step + 1) / steps.length) * 100);
+
   return (
-    <div className="max-w-2xl mx-auto py-8">
-      <h2 className="text-3xl font-extrabold text-indigo-700 mb-6 text-center drop-shadow">AI 단계별 분석 결과</h2>
-      <div className="mb-4 text-center text-lg text-gray-600">검색어: <b>{result.name || result.title || '-'}</b></div>
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-sm text-gray-500">{step + 1} / {steps.length} 단계</span>
-        <div className="flex gap-2">
-          <button onClick={() => setStep(step - 1)} disabled={isFirst} className="px-3 py-1 rounded bg-gray-200 text-gray-700 disabled:opacity-50">이전</button>
-          <button onClick={() => setStep(step + 1)} disabled={isLast} className="px-3 py-1 rounded bg-indigo-600 text-white disabled:opacity-50">다음</button>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white py-12 px-4 w-full flex flex-col items-center">
+      {/* 상단 타이틀 */}
+      <div className="w-full max-w-screen-2xl mx-auto text-center mb-8">
+        <h1 className="text-4xl font-extrabold text-indigo-700 mb-2 tracking-tight drop-shadow">AI 분석 결과</h1>
+        <div className="text-lg text-gray-600">검색어: <b>{result.name || result.title || '-'}</b></div>
+      </div>
+      {/* 진행 바 */}
+      <div className="w-full max-w-screen-2xl mx-auto mb-6">
+        <div className="flex justify-between text-sm text-gray-500 mb-1">
+          <span>{step + 1} / {steps.length} 단계</span>
+          <span className="font-bold text-indigo-700">{stepInfo.label}</span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-300">
+          <div className="bg-indigo-500 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
-      <section className="bg-white rounded-xl shadow p-6 mb-4">
-        <h3 className="text-xl font-bold mb-2 text-indigo-700">{steps[step].label}</h3>
-        <div className="mb-2 text-gray-500 text-sm">실전 팁: {steps[step].tip}</div>
-        {getStepContent(step, result, salesMethod, setSalesMethod)}
-      </section>
-      <div className="flex justify-center gap-4 mt-8">
-        <button onClick={onPdf} className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">PDF 저장</button>
-        <button onClick={onReset} className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">다시 분석</button>
+      {/* 단계별 카드 */}
+      <div className="w-full max-w-screen-2xl mx-auto bg-white rounded-2xl shadow-xl px-32 py-20 min-h-[700px] mb-8 flex flex-row gap-4 items-start justify-center">
+        {/* 그래프 */}
+        <div className="w-1/2 flex flex-col items-center justify-center min-w-[300px]">
+          {stepChart[stepInfo.key]}
+        </div>
+        {/* 내용 */}
+        <div className="w-1/2 text-2xl leading-loose">
+          <h2 className="text-2xl font-bold text-indigo-700 mb-2 drop-shadow-sm">{stepInfo.label}</h2>
+          <div className="mb-2 text-gray-500 text-sm">실전 팁: {stepInfo.tip}</div>
+          <div className="mb-4 text-base text-gray-800">
+            {getStepContent(step, result, salesMethod, setSalesMethod)}
+          </div>
+          {/* 더미 인사이트/조언/수치 등 풍부하게 */}
+          <div className="mt-4 text-sm text-gray-600">
+            <div className="mb-1"><b>인사이트:</b> {safe(result[stepInfo.key]?.insight, '이 단계에서 주목해야 할 핵심 인사이트와 시장 동향, 경쟁사 전략, 트렌드 변화 등을 요약합니다.')}</div>
+            <div className="mb-1"><b>실전 조언:</b> {safe(result[stepInfo.key]?.advice, '실제 셀러들이 활용하는 전략, 주의점, 성장 팁 등을 안내합니다.')}</div>
+            <div><b>수치/지표:</b> {safe(result[stepInfo.key]?.number, '관련 수치, 성장률, 점유율, 가격대 등')}</div>
+          </div>
+        </div>
       </div>
+      {/* 하단 버튼 */}
+      <div className="w-full max-w-screen-2xl mx-auto flex justify-between gap-6 mt-4">
+        <button onClick={() => setStep(step - 1)} disabled={isFirst} className="w-1/4 px-8 py-4 rounded-lg bg-gray-200 text-gray-700 text-lg font-semibold hover:bg-gray-300 disabled:opacity-50 transition">이전</button>
+        <button onClick={() => setStep(step + 1)} disabled={isLast} className="w-1/4 px-8 py-4 rounded-lg bg-indigo-600 text-white text-lg font-semibold hover:bg-indigo-700 disabled:opacity-50 transition">다음</button>
+        <button onClick={onPdf} className="w-1/4 px-8 py-4 bg-orange-500 text-white text-lg rounded-lg hover:bg-orange-600 font-semibold transition">PDF 저장</button>
+        <button onClick={onReset} className="w-1/4 px-8 py-4 bg-gray-100 text-gray-800 text-lg rounded-lg hover:bg-gray-200 font-semibold transition">다시 분석</button>
+      </div>
+
     </div>
   );
 }

@@ -1,1 +1,15 @@
-{"/_not-found":"/_not-found","/analysis-result/page":"/analysis-result","/analysis/page":"/analysis","/competitor-analysis/page":"/competitor-analysis","/market-analysis/page":"/market-analysis","/page":"/","/product-analysis/page":"/product-analysis","/price-analysis/page":"/price-analysis","/product-analysis/result/page":"/product-analysis/result","/risk-analysis/page":"/risk-analysis","/target-analysis/page":"/target-analysis","/trend-analysis/page":"/trend-analysis"}
+{
+  "/_not-found/page": "/_not-found",
+  "/price-analysis/page": "/price-analysis",
+  "/analysis/page": "/analysis",
+  "/analysis-result/page": "/analysis-result",
+  "/competitor-analysis/page": "/competitor-analysis",
+  "/product-analysis/page": "/product-analysis",
+  "/market-analysis/page": "/market-analysis",
+  "/page": "/",
+  "/product-analysis/result/page": "/product-analysis/result",
+  "/risk-analysis/page": "/risk-analysis",
+  "/target-analysis/page": "/target-analysis",
+  "/trend-analysis/page": "/trend-analysis",
+  "/analysis/[id]/page": "/analysis/[id]"
+}

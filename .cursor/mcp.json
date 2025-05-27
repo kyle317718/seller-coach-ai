@@ -1,0 +1,36 @@
+{
+  "servers": [],
+  "mcpServers": {
+    "server-sequential-thinking": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "filesystem": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:/",
+        "D:/"
+      ]
+    },
+    "tavily-mcp": {
+      "command": "npx",
+      "args": ["-y", "@mcptools/mcp-tavily"],
+      "env": {
+        "TAVILY_API_KEY": "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"
+      }
+    },
+    "youtube-transcript": {
+      "command": "npx",
+      "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"]
+    }
+  }
+}

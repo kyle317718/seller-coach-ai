@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AnalysisFlow from './pages/analysis/AnalysisFlow';
+import AnalysisNavBar from '../../../components/AnalysisNavBar';
 
 export default function App() {
   return (

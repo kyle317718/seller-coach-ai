@@ -1,1 +1,7 @@
-{"headers":{"x-next-cache-tags":"_N_T_/layout,_N_T_/risk-analysis/layout,_N_T_/risk-analysis/page,_N_T_/risk-analysis"}}
+{
+  "headers": {
+    "x-nextjs-stale-time": "4294967294",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/risk-analysis/layout,_N_T_/risk-analysis/page,_N_T_/risk-analysis"
+  }
+}
