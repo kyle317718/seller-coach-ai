@@ -5,7 +5,11 @@ const AnalysisSelector = () => {
   const { startAnalysis } = useAnalysis();
 
   const analysisOptions = [
+<<<<<<< HEAD
+    { type: 'market', label: '시장 분석(성공의 비밀 찾기)', desc: '1조 원 규모 시장에서 당신의 위치' },
+=======
     { type: 'market', label: '시장 분석', desc: '1조 원 규모 시장에서 당신의 위치' },
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
     { type: 'price', label: '가격 분석', desc: '최적 가격대 도출' },
     { type: 'competitor', label: '경쟁사 분석', desc: '5개사 가격/리뷰 비교' },
     { type: 'target', label: '타겟 분석', desc: '구매자 페르소나 정의' },

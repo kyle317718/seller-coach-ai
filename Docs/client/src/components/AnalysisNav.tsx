@@ -20,7 +20,11 @@ const AnalysisNav: React.FC<AnalysisNavProps> = ({ steps, currentStep, onStepCha
           onClick={() => onStepChange && onStepChange(idx)}
           disabled={onStepChange == null}
         >
+<<<<<<< HEAD
+          {label} <span role="img" aria-label="rocket">🚀</span>
+=======
           {label}
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
         </button>
       ))}
     </nav>

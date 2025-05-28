@@ -1,8 +1,27 @@
 node_modules/
+<<<<<<< HEAD
+<<<<<<< HEAD
 out/
+=======
+>>>>>>> efea509d (최초 커밋)
+=======
+out/
+>>>>>>> c6d01baf (Add .gitignore and remove node_modules from repo)
 .next/
 dist/
 build/
 .env
 .DS_Store
+<<<<<<< HEAD
+<<<<<<< HEAD
 npm-debug.log
+=======
+
+.vercel
+
+# Local Netlify folder
+.netlify
+>>>>>>> efea509d (최초 커밋)
+=======
+npm-debug.log
+>>>>>>> c6d01baf (Add .gitignore and remove node_modules from repo)

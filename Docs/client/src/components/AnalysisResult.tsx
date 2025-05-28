@@ -238,6 +238,15 @@ export default function AnalysisResult({ result, onRetry, onPdf, onReset }: Prop
     console.log('result 객체:', result);
   }, [result]);
 
+<<<<<<< HEAD
+  if (!result) return <div>아직 결과가 없어요! 도전은 멈추지 않습니다. 상품을 입력하고 성장의 첫걸음을 내딛어 보세요!</div>;
+  if (result.error) {
+    return (
+      <div>
+        <strong>분석 중 오류가 발생했어요. 하지만 실패는 성공의 어머니! 다시 한 번 도전해 보세요. 오류 내용: </strong>
+        <span>{result.error}</span>
+        <button onClick={onRetry}>다시 도전하기</button>
+=======
   if (!result) return <div>결과 없음 (result가 없습니다)</div>;
   if (result.error) {
     return (
@@ -245,6 +254,7 @@ export default function AnalysisResult({ result, onRetry, onPdf, onReset }: Prop
         <strong>오류 발생: </strong>
         <span>{result.error}</span>
         <button onClick={onRetry}>재시도</button>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
       </div>
     );
   }
@@ -278,7 +288,11 @@ export default function AnalysisResult({ result, onRetry, onPdf, onReset }: Prop
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white py-12 px-4 w-full flex flex-col items-center">
       {/* 상단 타이틀 */}
       <div className="w-full max-w-screen-2xl mx-auto text-center mb-8">
+<<<<<<< HEAD
+        <h1 className="text-4xl font-extrabold text-indigo-700 mb-2 tracking-tight drop-shadow">AI 분석 결과 – 당신의 성장, 지금부터 시작입니다!</h1>
+=======
         <h1 className="text-4xl font-extrabold text-indigo-700 mb-2 tracking-tight drop-shadow">AI 분석 결과</h1>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
         <div className="text-lg text-gray-600">검색어: <b>{result.name || result.title || '-'}</b></div>
       </div>
       {/* 진행 바 */}
@@ -300,14 +314,22 @@ export default function AnalysisResult({ result, onRetry, onPdf, onReset }: Prop
         {/* 내용 */}
         <div className="w-1/2 text-2xl leading-loose">
           <h2 className="text-2xl font-bold text-indigo-700 mb-2 drop-shadow-sm">{stepInfo.label}</h2>
+<<<<<<< HEAD
+          <div className="mb-2 text-gray-500 text-sm">성공 팁: {stepInfo.tip}</div>
+=======
           <div className="mb-2 text-gray-500 text-sm">실전 팁: {stepInfo.tip}</div>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
           <div className="mb-4 text-base text-gray-800">
             {getStepContent(step, result, salesMethod, setSalesMethod)}
           </div>
           {/* 더미 인사이트/조언/수치 등 풍부하게 */}
           <div className="mt-4 text-sm text-gray-600">
             <div className="mb-1"><b>인사이트:</b> {safe(result[stepInfo.key]?.insight, '이 단계에서 주목해야 할 핵심 인사이트와 시장 동향, 경쟁사 전략, 트렌드 변화 등을 요약합니다.')}</div>
+<<<<<<< HEAD
+            <div className="mb-1"><b>실전 조언:</b> {safe(result[stepInfo.key]?.advice, '실제 셀러들이 활용한 성공 전략, 주의점, 그리고 성장의 비밀을 안내합니다. 당신도 할 수 있습니다!')}</div>
+=======
             <div className="mb-1"><b>실전 조언:</b> {safe(result[stepInfo.key]?.advice, '실제 셀러들이 활용하는 전략, 주의점, 성장 팁 등을 안내합니다.')}</div>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
             <div><b>수치/지표:</b> {safe(result[stepInfo.key]?.number, '관련 수치, 성장률, 점유율, 가격대 등')}</div>
           </div>
         </div>

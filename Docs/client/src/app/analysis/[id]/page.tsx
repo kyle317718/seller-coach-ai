@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import AnalysisPageContent from "./AnalysisPageContent";
 
-
 export default function AnalysisPage() {
   return (
     <Suspense>

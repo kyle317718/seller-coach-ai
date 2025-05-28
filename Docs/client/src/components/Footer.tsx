@@ -6,7 +6,11 @@ export const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* 회사 정보 */}
         <div>
+<<<<<<< HEAD
+          <h3 className="text-lg font-semibold mb-3 text-gray-800">셀러코치.AI – 당신의 성공을 끝까지 응원합니다!</h3>
+=======
           <h3 className="text-lg font-semibold mb-3 text-gray-800">셀러코치.AI</h3>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
           <p className="text-sm mb-2"><MapPin size={14} className="inline-block mr-1"/> 주소: [회사 주소]</p>
           <p className="text-sm mb-2"><Phone size={14} className="inline-block mr-1"/> 문의: [연락처]</p>
           <p className="text-sm"><Mail size={14} className="inline-block mr-1"/> 이메일: [이메일 주소]</p>
@@ -33,7 +37,11 @@ export const Footer = () => (
         {/* 소셜 미디어 및 뉴스레터 */}
         <div>
           <h3 className="text-lg font-semibold mb-3 text-gray-800">소식 받기</h3>
+<<<<<<< HEAD
+          <p className="text-sm mb-3">뉴스레터 구독으로 성공 셀러의 길, 한 발 더 가까워지세요!</p>
+=======
           <p className="text-sm mb-3">뉴스레터를 구독하고 최신 정보를 받아보세요.</p>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
           <div className="flex mb-4">
             <input type="email" placeholder="이메일 주소 입력" className="flex-grow p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
             <button className="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-r-lg transition duration-300">구독</button>
@@ -48,7 +56,11 @@ export const Footer = () => (
         </div>
       </div>
       <div className="mt-8 pt-8 border-t border-gray-300 text-center text-sm text-gray-500">
+<<<<<<< HEAD
+        &copy; {new Date().getFullYear()} 셀러코치.AI. 당신의 성장과 성공을 항상 응원합니다!
+=======
         &copy; {new Date().getFullYear()} 셀러코치.AI. All rights reserved.
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
       </div>
     </div>
   </footer>

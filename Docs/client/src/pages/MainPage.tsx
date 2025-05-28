@@ -23,7 +23,7 @@ export default function MainPage() {
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-fit">
         <span className="inline-block bg-white/80 text-purple-600 text-lg font-bold rounded-full px-8 py-3 shadow-md">
-          당신의 선택이 셀러코치.AI를 더 강하게 만듭니다! 함께 성장하며, 최고의 성공을 만들어가요! 🚀
+          지금 이 순간, 당신의 도전이 셀러코치.AI와 함께라면 반드시 성장과 성공으로 이어집니다! 포기하지 마세요, 우리는 끝까지 함께 갑니다! 🚀
         </span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">

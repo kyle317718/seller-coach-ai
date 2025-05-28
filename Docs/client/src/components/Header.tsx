@@ -8,12 +8,21 @@ export default function Header() {
           {/* 로고 아이콘(이모지/이미지) */}
           <span className="text-2xl mr-1">🚀</span>
           <Link href="/" className="text-xl font-extrabold tracking-tight text-gray-900">
+<<<<<<< HEAD
+            셀러코치.AI – 당신의 도전을 응원합니다!
+          </Link>
+        </div>
+        <nav className="flex gap-6 text-base font-medium">
+          <Link href="/" className="hover:text-orange-500 transition">홈(성공의 시작)</Link>
+          <Link href="/product-analysis" className="hover:text-orange-500 transition">제품 분석(성장 가이드)</Link>
+=======
             셀러코치.AI
           </Link>
         </div>
         <nav className="flex gap-6 text-base font-medium">
           <Link href="/" className="hover:text-orange-500 transition">홈</Link>
           <Link href="/product-analysis" className="hover:text-orange-500 transition">제품 분석</Link>
+>>>>>>> 69ed5420 (동기부여 말투 전체 적용 및 UI 개선 (detached HEAD 상태))
         </nav>
       </div>
     </header>
