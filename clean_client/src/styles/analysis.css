@@ -1,0 +1,11 @@
+.analysis-card {
+  @apply p-6 border rounded-lg hover:bg-gray-50 transition-colors;
+}
+
+.analysis-card h3 {
+  @apply font-bold text-lg mb-2;
+}
+
+.analysis-card p {
+  @apply text-gray-600;
+}
